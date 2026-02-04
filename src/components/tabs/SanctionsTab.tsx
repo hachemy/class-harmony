@@ -4,22 +4,41 @@ import { StudentSelector } from '../students/StudentSelector';
 import { SanctionForm } from '../sanctions/SanctionForm';
 import { RachatForm } from '../sanctions/RachatForm';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AlertTriangle, Heart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { AlertTriangle, Heart, Maximize2, Minimize2 } from 'lucide-react';
 import { Student } from '@/types';
+import { cn } from '@/lib/utils';
 
 export function SanctionsTab() {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className={cn(
+      "space-y-6 transition-all duration-300",
+      isFullscreen ? "fixed inset-0 z-50 bg-background p-6 overflow-auto" : "max-w-4xl mx-auto"
+    )}>
       <Card className="glass-card">
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between space-y-0">
           <CardTitle className="font-display">Sélectionner un élève</CardTitle>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsFullscreen(!isFullscreen)}
+            title={isFullscreen ? 'Quitter le plein écran' : 'Plein écran'}
+          >
+            {isFullscreen ? (
+              <Minimize2 className="h-5 w-5" />
+            ) : (
+              <Maximize2 className="h-5 w-5" />
+            )}
+          </Button>
         </CardHeader>
         <CardContent>
           <StudentSelector 
             onSelect={setSelectedStudent} 
             selectedStudent={selectedStudent}
+            isFullscreen={isFullscreen}
           />
         </CardContent>
       </Card>
