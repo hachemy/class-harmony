@@ -16,7 +16,7 @@ export function MainLayout() {
               </div>
               <div>
                 <h1 className="font-display font-bold text-xl text-foreground">Gestion de Classe</h1>
-                <p className="text-xs text-muted-foreground">Sanctions & Rachats Prof.M. H. HASSIB</p>
+                <p className="text-xs text-muted-foreground"> Prof.M. Hachem HASSIB</p>
               </div>
             </div>
             <ThemeToggle />
