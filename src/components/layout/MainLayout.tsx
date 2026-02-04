@@ -4,6 +4,7 @@ import { GestionTab } from '@/components/tabs/GestionTab';
 import { SanctionsTab } from '@/components/tabs/SanctionsTab';
 import { StatistiquesTab } from '@/components/tabs/StatistiquesTab';
 import { SanctionCardOverlay } from '@/components/sanctions/SanctionCardOverlay';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 export function MainLayout() {
   return (
@@ -20,6 +21,7 @@ export function MainLayout() {
                 <p className="text-xs text-muted-foreground">Sanctions & Rachats</p>
               </div>
             </div>
+            <ThemeToggle />
           </div>
         </div>
       </header>

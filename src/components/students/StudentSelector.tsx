@@ -9,9 +9,10 @@ import { cn } from '@/lib/utils';
 interface StudentSelectorProps {
   onSelect: (student: Student | null) => void;
   selectedStudent: Student | null;
+  isFullscreen?: boolean;
 }
 
-export function StudentSelector({ onSelect, selectedStudent }: StudentSelectorProps) {
+export function StudentSelector({ onSelect, selectedStudent, isFullscreen = false }: StudentSelectorProps) {
   const { students, classes } = useApp();
   const [selectedClass, setSelectedClass] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -73,7 +74,12 @@ export function StudentSelector({ onSelect, selectedStudent }: StudentSelectorPr
       </div>
 
       {/* Student Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 max-h-[300px] overflow-y-auto">
+      <div className={cn(
+        "grid gap-2 overflow-y-auto",
+        isFullscreen 
+          ? "grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 max-h-[calc(100vh-280px)]" 
+          : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 max-h-[300px]"
+      )}>
         {filteredStudents.length === 0 ? (
           <p className="col-span-full text-center text-muted-foreground py-4">
             Aucun élève trouvé
