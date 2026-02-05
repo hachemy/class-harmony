@@ -5,6 +5,9 @@ import { SanctionsTab } from '@/components/tabs/SanctionsTab';
 import { StatistiquesTab } from '@/components/tabs/StatistiquesTab';
 import { SanctionCardOverlay } from '@/components/sanctions/SanctionCardOverlay';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
+import { InstallPWA } from '@/components/pwa/InstallPWA';
+import { OfflineIndicator } from '@/components/pwa/OfflineIndicator';
+
 export function MainLayout() {
   return <div className="min-h-screen bg-background">
       <header className="border-b bg-card/80 backdrop-blur-sm sticky top-0 z-40">
@@ -56,5 +59,7 @@ export function MainLayout() {
       </main>
 
       <SanctionCardOverlay />
+      <InstallPWA />
+      <OfflineIndicator />
     </div>;
 }
