@@ -6,7 +6,7 @@ import { TeacherScheduleTable } from '../schedule/TeacherScheduleTable';
 import { StudentList } from '../students/StudentList';
 import { ImportStudentsDialog } from '../students/ImportStudentsDialog';
 import { CreateSessionDialog } from '../schedule/CreateSessionDialog';
-
+import { DataExportImport } from '../data/DataExportImport';
 export function GestionTab() {
   const [showImportDialog, setShowImportDialog] = useState(false);
   const [showSessionDialog, setShowSessionDialog] = useState(false);
@@ -47,6 +47,20 @@ export function GestionTab() {
         </CardHeader>
         <CardContent>
           <StudentList />
+        </CardContent>
+      </Card>
+
+      {/* Data Management Section */}
+      <Card className="glass-card xl:col-span-2">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+          <CardTitle className="font-display text-lg">Sauvegarde des données</CardTitle>
+          <DataExportImport />
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            Exportez vos données pour les sauvegarder ou les transférer vers un autre appareil. 
+            Importez un fichier de sauvegarde pour restaurer ou fusionner les données.
+          </p>
         </CardContent>
       </Card>
 
